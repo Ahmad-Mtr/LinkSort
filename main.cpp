@@ -1,8 +1,8 @@
 #include <iostream>
 
 using namespace std;
-const int n = 5;
-int X[n] = {5, 3, 2, 10, 9};
+const int n = 15;
+int X[n] = {5, 3, 2, 10, 9,0,8,8,8,1,10,30,44,31,22};
 
 struct node {
     int data;
@@ -30,7 +30,22 @@ void insertFirst(int value){
     head = newnode;
 }
 void insert_inBetween(int value){
+    struct node *newnode = new node;
+    newnode->data = value;
 
+    struct node *temp = head;
+    struct node *_4next;
+
+    while (temp != NULL) {
+        _4next = temp;
+        if ((temp->data <= value) && (_4next->next->data > value)){
+            //put node
+            newnode->next = temp->next;
+            temp->next = newnode;
+            return;
+        }
+        temp = temp->next;
+    }
 }
 void linkSort(int A[n]){
     struct node *startingnode = new node;
@@ -63,8 +78,8 @@ void traverse() {
 
 }
 void _PrintArray() {
-    for (int i = 0; i < 4; ++i)
-        cout << "X[" << i << "]: " << X[i] << endl;
+    for (int i = 0; i < n; ++i)
+        cout << "X[" << i << "]: " << X[i] << "\t\t";
 }
 
 int main() {
