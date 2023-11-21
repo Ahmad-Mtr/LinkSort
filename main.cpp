@@ -47,6 +47,13 @@ void insert_inBetween(int value){
         temp = temp->next;
     }
 }
+void resetArray(int A[n]){
+    struct node *tmp = head;
+    for (int i = 0; i < n; ++i) {
+        A[i] = tmp->data;
+        tmp = tmp->next;
+    }
+}
 void linkSort(int A[n]){
     struct node *startingnode = new node;
     startingnode->data = A[0];
@@ -60,6 +67,7 @@ void linkSort(int A[n]){
         else
             insert_inBetween(A[k]);
     }
+    resetArray(A);
 
 }
 
@@ -86,6 +94,11 @@ int main() {
     //traverse();
     linkSort(X);
     traverse();
+    cout<<endl;
+    cout<<endl;
+    for (int i = 0; i < n; ++i) {
+        cout<<X[i]<<"\t";
+    }
     cout<<endl;
     _PrintArray();
     return 0;
