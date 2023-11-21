@@ -1,0 +1,3 @@
+C:/Users/a.mahmoud/CLionProjects/LinkSort/cmake-build-debug/CMakeFiles/LinkSort.dir
+C:/Users/a.mahmoud/CLionProjects/LinkSort/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/a.mahmoud/CLionProjects/LinkSort/cmake-build-debug/CMakeFiles/rebuild_cache.dir
