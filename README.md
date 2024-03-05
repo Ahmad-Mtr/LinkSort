@@ -2,6 +2,7 @@
 > Note that this repo is unfinished completely, this is intended as an Experiment.
 
 A sorting Algorithm that uses LinkedList DS to sort Arrays.
+******
 ## Time Complexity
 $$
 Worst Case: O(n^2)
@@ -13,7 +14,9 @@ $$
 ## Space Complexity
 $$
 \theta(n)
+------
 $$
+*****
 ## Use-cases
 ```cpp
 int main (){
