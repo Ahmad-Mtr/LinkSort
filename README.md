@@ -7,14 +7,13 @@ A sorting Algorithm that uses LinkedList DS to sort Arrays.
 $$
 Worst Case: O(n^2)
 $$
-
+--------
 $$
  Best Case(Expanding Range): \Omega(n)
 $$
 ## Space Complexity
 $$
 \theta(n)
-------
 $$
 *****
 ## Use-cases
