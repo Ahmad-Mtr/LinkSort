@@ -1,4 +1,3 @@
-
 class Node {
   int data;
   Node? next;
@@ -73,8 +72,8 @@ class LinkSort {
 }
 
 void main() {
-  var X = [5, 3, 2, 10, 9, 0, -10, 8, 8, 1, 10, 30, 44, 31, 22];
-  var sorter = LinkSort();
+  List<int> X = [5, 3, 2, 10, 9, 0, -10, 8, 8, 1, 10, 30, 44, 31, 22];
+  LinkSort sorter = LinkSort();
   sorter.linkSort(X);
   print(X);
 }

@@ -1,94 +1,97 @@
 #include <iostream>
 using namespace std;
-const int n = 15;
 
-// Example Array
-int X[n] = {5, 3, 2, 10, 9, 0, -10, 8, 8, 1, 10, 30, 44, 31, 22};
-
-struct node {
+typedef struct Node {
     int data;
-    struct node *next;
-    struct node *prev;
-};
-struct node *head = nullptr;
-struct node *tail = nullptr;
+    struct Node* next;
+    struct Node* prev;
+} Node;
 
-void _insertLast(int value) {
-    struct node *newnode = new node;
-    newnode->data = value;
-    newnode->next = nullptr;
-
-    tail->next = newnode;
-    newnode->prev = tail;
-    tail = newnode;
-}
-void _insertFirst(int value) {
-    struct node *newnode = new node;
-    newnode->data = value;
-    newnode->prev = nullptr;
-    if (head == nullptr) {
-        head = newnode;
-        tail = newnode;
-    } else {
-        if (head->next == nullptr) {
-            tail = head;
-        }
-        newnode->next = head;
-        head->prev = newnode;
-        head = newnode;
+void insertLast(int value, Node** head, Node** tail) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    if (*tail != NULL) {
+        (*tail)->next = newNode;
     }
-}
-void _insertBetween(int value) {
-    struct node *newnode = new node;
-    newnode->data = value;
-    struct node *temp = head;
-    if (head == nullptr)
-        _insertFirst(value);
-    else{
-        while(!(temp->data <= value && value < temp->next->data)
-        ){
-            temp = temp->next;
-        }
-        if (temp->next->next == nullptr)
-            tail = temp->next;
-        temp->next->prev = newnode;
-        newnode->next = temp->next;
-        temp->next = newnode;
-        newnode->prev = temp;
+    newNode->prev = *tail;
+    *tail = newNode;
+    if (*head == NULL) {
+        *head = newNode;
     }
 }
 
-// Replace the Array with the sorted one.
-void _resetArray(int A[n]) {
-    struct node *tmp = head;
+void insertFirst(int value, Node** head, Node** tail) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->prev = NULL;
+    
+    if (*head != NULL) {
+        (*head)->prev = newNode;
+    }
+    newNode->next = *head;
+    *head = newNode;
+    if (*tail == NULL) {
+        *tail = newNode;
+    }
+}
+
+void insertBetween(int value, Node* temp, Node** tail) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    while (temp->next != NULL && temp->next->data < value) {
+        temp = temp->next;
+    }
+    newNode->next = temp->next;
+    newNode->prev = temp;
+    if (temp->next != NULL) {
+        temp->next->prev = newNode;
+    }
+    temp->next = newNode;
+    if (newNode->next == NULL) {
+        *tail = newNode;
+    }
+}
+
+void resetArray(int A[], int n, Node* temp) {
     for (int i = 0; i < n; ++i) {
-        A[i] = tmp->data;
-        tmp = tmp->next;
+        A[i] = temp->data;
+        temp = temp->next;
     }
 }
 
-// linkSort: An Array sorting Algorithim that is O(n^2) and Omega(n) time, and O(n) Space.
-void linkSort(int A[n]) {
-    struct node *startingnode = new node;
-    startingnode->data = A[0];
-    startingnode->next = head;
-    head = startingnode, tail = startingnode;
-    for (int k = 1; k < n; ++k) {
-        if (A[k] >= tail->data)
-        _insertLast(A[k]);
-        else if (A[k] <= head->data)
-        _insertFirst(A[k]);
-        else
-            _insertBetween(A[k]);
+void linkSort(int A[], int n) {
+    Node* head = NULL;
+    Node* tail = NULL;
+    
+    insertFirst(A[0], &head, &tail);
+    for (int i = 1; i < n; ++i) {
+        if (A[i] <= head->data) {
+            insertFirst(A[i], &head, &tail);
+        } else if (A[i] >= tail->data) {
+            insertLast(A[i], &head, &tail);
+        } else {
+            insertBetween(A[i], head, &tail);
+        }
     }
-    _resetArray(A);
-}
+    resetArray(A, n, head);
 
+    // Free the allocated memory
+    Node* current = head;
+    while (current != NULL) {
+        Node* next = current->next;
+        free(current);
+        current = next;
+    }
+}
 
 int main() {
-    linkSort(X);
+    int X[] = {5, 3, 2, 10, 9, 0, -10, 8, 8, 1, 10, 30, 44, 31, 22};
+    int n = sizeof(X) / sizeof(X[0]);
+    linkSort(X, n);
+    
     for(int a: X){
-        cout<<a<<". ";
+        cout<<a<<" ";
     }
     cout<<endl;
     return 0;

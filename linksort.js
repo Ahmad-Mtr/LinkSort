@@ -1,85 +1,82 @@
-
 class Node {
   constructor(data) {
-    this.data = data;
-    this.next = null;
-    this.prev = null;
+      this.data = data;
+      this.next = null;
+      this.prev = null;
   }
 }
 
-class LinkSort {
-  constructor() {
-    this.head = null;
-    this.tail = null;
+function insertLast(value, head, tail) {
+  let newNode = new Node(value);
+  if (tail !== null) {
+      tail.next = newNode;
   }
-
-  insertLast(value) {
-    const newNode = new Node(value);
-    if (this.tail) {
-      this.tail.next = newNode;
-      newNode.prev = this.tail;
-    }
-    this.tail = newNode;
-    if (!this.head) {
-      this.head = newNode;
-    }
+  newNode.prev = tail;
+  tail = newNode;
+  if (head === null) {
+      head = newNode;
   }
+  return { head, tail };
+}
 
-  insertFirst(value) {
-    const newNode = new Node(value);
-    if (this.head) {
-      this.head.prev = newNode;
-      newNode.next = this.head;
-    }
-    this.head = newNode;
-    if (!this.tail) {
-      this.tail = newNode;
-    }
+function insertFirst(value, head, tail) {
+  let newNode = new Node(value);
+  newNode.prev = null;
+  if (head !== null) {
+      head.prev = newNode;
   }
+  newNode.next = head;
+  head = newNode;
+  if (tail === null) {
+      tail = newNode;
+  }
+  return { head, tail };
+}
 
-  insertBetween(value) {
-    const newNode = new Node(value);
-    let temp = this.head;
-    while (temp.next && temp.next.data < value) {
+function insertBetween(value, temp, tail) {
+  let newNode = new Node(value);
+  while (temp.next !== null && temp.next.data < value) {
       temp = temp.next;
-    }
-    newNode.next = temp.next;
-    newNode.prev = temp;
-    if (temp.next) {
-      temp.next.prev = newNode;
-    }
-    temp.next = newNode;
-    if (!newNode.next) {
-      this.tail = newNode;
-    }
   }
+  newNode.next = temp.next;
+  newNode.prev = temp;
+  if (temp.next !== null) {
+      temp.next.prev = newNode;
+  }
+  temp.next = newNode;
+  if (newNode.next === null) {
+      tail = newNode;
+  }
+  return tail;
+}
 
-  resetArray(A) {
-    let temp = this.head;
-    for (let i = 0; i < A.length; ++i) {
+function resetArray(A, n, temp) {
+  for (let i = 0; i < n; i++) {
       A[i] = temp.data;
       temp = temp.next;
-    }
-  }
-
-  linkSort(A) {
-    this.head = this.tail = null;
-    this.insertFirst(A[0]);
-    for (let i = 1; i < A.length; ++i) {
-      if (A[i] <= this.head.data) {
-        this.insertFirst(A[i]);
-      } else if (A[i] >= this.tail.data) {
-        this.insertLast(A[i]);
-      } else {
-        this.insertBetween(A[i]);
-      }
-    }
-    this.resetArray(A);
   }
 }
 
-// Example usage
+function linkSort(A, n) {
+  let head = null;
+  let tail = null;
+
+  ({ head, tail } = insertFirst(A[0], head, tail));
+  for (let i = 1; i < n; i++) {
+      if (A[i] <= head.data) {
+          ({ head, tail } = insertFirst(A[i], head, tail));
+      } else if (A[i] >= tail.data) {
+          ({ head, tail } = insertLast(A[i], head, tail));
+      } else {
+          tail = insertBetween(A[i], head, tail);
+      }
+  }
+  resetArray(A, n, head);
+}
+
+// Test the linkSort function
 const X = [5, 3, 2, 10, 9, 0, -10, 8, 8, 1, 10, 30, 44, 31, 22];
-const sorter = new LinkSort();
-sorter.linkSort(X);
-console.log(X);
+const n = X.length;
+linkSort(X, n);
+
+console.log(X.join(' '));
