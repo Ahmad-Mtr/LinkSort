@@ -3,7 +3,7 @@ using namespace std;
 const int n = 15;
 
 // Example Array
-int X[n] = {5, 3, 2, 10, 9, 0, 8, 8, 8, 1, 10, 30, 44, 31, 22};
+int X[n] = {5, 3, 2, 10, 9, 0, -10, 8, 8, 1, 10, 30, 44, 31, 22};
 
 struct node {
     int data;
@@ -87,6 +87,9 @@ void linkSort(int A[n]) {
 
 int main() {
     linkSort(X);
-    cout<<X[0]<<X[1]<<X[2]<<endl;
+    for(int a: X){
+        cout<<a<<". ";
+    }
+    cout<<endl;
     return 0;
 }
