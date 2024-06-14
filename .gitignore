@@ -2,4 +2,5 @@
 
 ./CMakeLists.txt
 ./cmake-build-debug/
-./.git/
+./.gitn/
+main.exe

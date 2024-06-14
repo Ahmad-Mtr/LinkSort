@@ -41,7 +41,7 @@ The LinkSort algorithm works by inserting elements from an array into a doubly l
 
 ## Use Case
 
-The best use case for LinkSort is when dealing with an expanding array where each newly accessed value is either the smallest or the largest compared to previously accessed values. This characteristic ensures that the algorithm operates close to its best-case time complexity of \( \Omega(n) \).
+The best use case for LinkSort is when dealing with an expanding array where each newly accessed value is either the smallest or the largest compared to previously accessed values. This characteristic ensures that the algorithm operates close to its best-case time complexity of `Omega(n)`.
 
 ## Complexity
 
@@ -58,10 +58,10 @@ Below is the List of available implementations of the LinkSort algorithm:
 
 | Language   | State of Implementation | Package or Code       | Installation script     |
 | ---------- | ----------------------- | --------------------- | ----------------------- |
-| C          | Implemented             | [Code](#)     |            |
-| C++        | Implemented             | [Code](#)     |          |
-| Dart       | Not Implemented             | [Pub Package Link](#) | `dart pub add linksort` |
-| JavaScript | Not Implemented             | [npm Link](#)         | `npm install linksort`  |
+| C          | Implemented             | [Code](./linksort.c)     |            |
+| C++        | Implemented             | [Code](./linksort.cpp)     |          |
+| Dart       | Not Implemented             | [Pub Package Link](./linksort.dart) | `dart pub add linksort` |
+| JavaScript | Not Implemented             | [npm Link](./linksort.dart)         | `npm install linksort`  |
 
 ## Psuedo Code
 ```bash
