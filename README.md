@@ -47,9 +47,9 @@ The best use case for LinkSort is when dealing with an expanding array where eac
 - **Time Complexity**:
   - Best Case: Omega(n)
   - Worst Case: O(n^2)
-    <img align="center" alt="time complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/assets/time.png">
+    <img align="center" alt="time complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/time.png">
 - **Space Complexity**: Theta(n)
-  <img align="center" alt="space complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/assets/space.png">
+  <img align="center" alt="space complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/space.png">
 
 ## Implementation
 
