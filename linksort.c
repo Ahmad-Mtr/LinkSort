@@ -29,6 +29,7 @@ void insertFirst(int value) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = value;
     newNode->prev = NULL;
+    
     if (head != NULL) {
         head->prev = newNode;
     }

@@ -20,11 +20,13 @@
 
 **LinkSort** is a sorting algorithm implemented using a doubly linked list with a head and tail. This algorithm is particularly effective for sorting arrays that are expanding, meaning that as the array is traversed, each newly accessed value is either the lowest or the highest compared to the previous values. The best-case time complexity is `Omega(n)`, while the worst-case time complexity is `O(n^2)`. The space complexity is `Theta(n)` .
 
+<img align="center" alt="time complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/linksort.gif">
+
 ---
 
 ## Inspiration
 
-During my Algorithms class, I remembered how I was sorting a deck of Cards when I was a Kid, in which I'll put a choosen Card after/before the first Card if it had a higher/lower value or in between. That's how I was inpsired to start creating this Algorithm.
+During my Algorithms class, I remembered how I was sorting a deck of Cards when I was a Kid, in which I'll build a sorted deck gradually by putting each new card either at the begining/end or in between. That's how I was inpsired to start creating this Algorithm.
 
 ---
 
@@ -48,7 +50,7 @@ The best use case for LinkSort is when dealing with an expanding array where eac
 - **Time Complexity**:
   - Best Case: Omega(n)
   - Worst Case: O(n^2)
-    <img align="center" alt="time complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/time.png">
+  <img align="center" alt="time complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/time.png">
 - **Space Complexity**: Theta(n)
   <img align="center" alt="space complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/space.png">
 
