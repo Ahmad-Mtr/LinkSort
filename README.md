@@ -13,6 +13,7 @@
   - [Psuedo Code](#psuedo-code)
   - [Usage](#usage)
   - [Conclusion](#conclusion)
+  - [Contributing](#contributing)
 
 ---
 
@@ -50,7 +51,7 @@ The best use case for LinkSort is when dealing with an expanding array where eac
 - **Time Complexity**:
   - Best Case: Omega(n)
   - Worst Case: O(n^2)
-  <img align="center" alt="time complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/time.png">
+    <img align="center" alt="time complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/time.png">
 - **Space Complexity**: Theta(n)
   <img align="center" alt="space complexity" src="https://raw.githubusercontent.com/Ahmad-Mtr/linksort/master/assets/space.png">
 
@@ -58,20 +59,21 @@ The best use case for LinkSort is when dealing with an expanding array where eac
 
 Below is the List of available implementations of the LinkSort algorithm:
 
-| Language   | State of Implementation | Package or Code       | Installation script     |
-| ---------- | ----------------------- | --------------------- | ----------------------- |
-| C          | Implemented             | [Code](./linksort.c)     |            |
-| C++        | Implemented             | [Code](./linksort.cpp)     |          |
-| Dart       | Not Implemented             | [Pub Package Link](./linksort.dart) | `dart pub add linksort` |
-| JavaScript | Not Implemented             | [npm Link](./linksort.dart)         | `npm install linksort`  |
+| Language   | State of Implementation                                  | Package or Code         | Installation script |
+| ---------- | -------------------------------------------------------- | ----------------------- | ------------------- |
+| C          | Code Implemented                                         | [Code](./linksort.c)    |                     |
+| C++        | Code Implemented                                         | [Code](./linksort.cpp)  |                     |
+| Dart       | Code Implemented (A package will be added in the future) | [Code](./linksort.dart) |                     |
+| JavaScript | Code Implemented (A package will be added in the future) | [Code](./linksort.js)   |                     |
 
 ## Psuedo Code
+
 ```bash
 input: A[1...n], head <- null, tail <- null.
 output: A sorted Array.
 
 insertFirst(value: integer)
-  newNode = new node 
+  newNode = new node
   newNode.data = value
   newNode.prev = null
   newNode.next = null
@@ -86,7 +88,7 @@ insertFirst(value: integer)
   end if
 
 insertLast(value: integer):
-  newNode = new node 
+  newNode = new node
   newNode.data = value
   newNode.next =  null
   newNode.prev =  null
@@ -96,7 +98,7 @@ insertLast(value: integer):
   tail = newNode
 
 insertInBetween(value: integer)
-  newNode = new node 
+  newNode = new node
   newNode.data = value
   newNode.next =  null
   newNode.prev =  null
@@ -124,7 +126,7 @@ reconstructArray(A: array of integers)
 
 linkSort(A: array of integers)
   n = length(A)
-    
+
   // Initialize the doubly linked list with the first element
   head = CreateNode(A[0])
   tail = head
@@ -174,3 +176,6 @@ int main() {
 ## Conclusion
 
 LinkSort is an efficient sorting algorithm for specific types of data sets, particularly those that expand in a manner where each new element is either the smallest or the largest seen so far. The use of a doubly linked list allows for flexible and efficient insertion of elements in their correct order, achieving optimal performance in favorable scenarios.
+
+## Contributing
+All Contributions, whether a language Implementation, improvement, or issues are Welcome, but please adhere to Github's common Guidelines.
