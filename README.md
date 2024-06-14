@@ -10,6 +10,7 @@
   - [Use Case](#use-case)
   - [Complexity](#complexity)
   - [Implementation](#implementation)
+  - [Psuedo Code](#psuedo-code)
   - [Usage](#usage)
   - [Conclusion](#conclusion)
 
@@ -61,6 +62,86 @@ Below is the List of available implementations of the LinkSort algorithm:
 | C++        | Implemented             | [Code](#)     |          |
 | Dart       | Not Implemented             | [Pub Package Link](#) | `dart pub add linksort` |
 | JavaScript | Not Implemented             | [npm Link](#)         | `npm install linksort`  |
+
+## Psuedo Code
+```bash
+input: A[1...n], head <- null, tail <- null.
+output: A sorted Array.
+
+insertFirst(value: integer)
+  newNode = new node 
+  newNode.data = value
+  newNode.prev = null
+  newNode.next = null
+
+  if head is null then
+      head = newNode
+      tail = newNode
+  else
+      newNode.next = head
+      head.prev = newNode
+      head = newNode
+  end if
+
+insertLast(value: integer):
+  newNode = new node 
+  newNode.data = value
+  newNode.next =  null
+  newNode.prev =  null
+
+  tail.next = newNode
+  newNode.prev = tail
+  tail = newNode
+
+insertInBetween(value: integer)
+  newNode = new node 
+  newNode.data = value
+  newNode.next =  null
+  newNode.prev =  null
+
+  temp = head
+    while temp.next is not null and temp.data <= value and value < temp.next.data do
+        temp = temp.next
+    end while
+    newNode.next = temp.next
+    newNode.prev = temp
+    if temp.next is not null then
+        temp.next.prev = newNode
+    end if
+    temp.next = newNode
+    if newNode.next is null then
+        tail = newNode
+    end if
+
+reconstructArray(A: array of integers)
+  temp = head
+    for i from 0 to length(A)-1 do
+        A[i] = temp.data
+        temp = temp.next
+    end for
+
+linkSort(A: array of integers)
+  n = length(A)
+    
+  // Initialize the doubly linked list with the first element
+  head = CreateNode(A[0])
+  tail = head
+
+  // Traverse the array and insert each element into the linked list
+  for k from 1 to n-1 do
+      if A[k] >= tail.data then
+          InsertLast(A[k])
+      else if A[k] <= head.data then
+          InsertFirst(A[k])
+      else
+          InsertBetween(A[k])
+      end if
+  end for
+
+  // Replace the array with the sorted values from the linked list
+  ResetArray(A)
+
+```
 
 ## Usage
 
